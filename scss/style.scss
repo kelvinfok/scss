@@ -1,0 +1,105 @@
+//1. Variables
+//$brand-font: Helvetica, sans-serif;
+$base-color: whitesmoke;
+$brand-color: #b37399;
+$secondary-color: #329403;
+$small-screen-width: 600px;
+$medium-screen-width: 800px;
+$large-screen-width: 900px;
+//
+/* CSS Comment */
+body {
+    width: 100%;
+    margin: 0 auto;
+    background-color: $base-color;
+    max-width: $large-screen-width;
+}
+h1 {
+    color: $brand-color;
+    text-align: center;
+}
+// 2. built in functions/mixins
+h2 {
+    color: darken($brand-color, 20%);
+}
+h3 {
+    color: darken($brand-color, 30%);
+}
+// 3. Nesting
+header {
+    background: complement($brand-color);
+    h1 {
+        font-size: 3em;
+    }
+}
+// 4. Inheritance/Extension
+.btn {
+    border: 1px solid #ccc;
+    padding: 10px;
+    background: grey;
+    &:hover {
+        color: $brand-color;
+    }
+}
+.good-btn {
+  @extend .btn;
+  background: adjust-hue($brand-color, 50);
+}
+.bad-btn {
+  @extend .btn;
+  background: complement(adjust-hue($brand-color, 50));
+}
+// 5. Mixins
+@mixin border-radius($radius) {
+  -webkit-border-radius: $radius;
+     -moz-border-radius: $radius;
+      -ms-border-radius: $radius;
+          border-radius: $radius;
+}
+@mixin border-sizer($base-size){
+    border: $base-size solid $brand-color;
+    border-bottom: $base-size*2 solid $brand-color;
+}
+p {
+    font-size: 1em;
+}
+.lead-text {
+    padding: 20px;
+    background: lighten($base-color, 20%);
+    @include border-sizer(1em);
+    @include border-radius(5px);
+}
+// 5b. with argumements. can use mixins in combination with media queries to control content display
+@mixin min-break($length) {
+    @media (min-width: $length) {
+        @content;
+    }
+}
+@mixin min-max-break($min-length, $max-length) {
+    @media (min-width: $min-length) and (max-width: $max-length) {
+        @content;
+    }
+}
+@mixin max-break($length) {
+    @media (max-width: $length) {
+        @content;
+    }
+}
+.small-screen-only {
+    display: none;
+    @include max-break($small-screen-width) {
+        display: block;
+    }
+}
+.medium-screen-only {
+    display: none;
+    @include min-max-break($small-screen-width + 1, $medium-screen-width) {
+        display: block;
+    }
+}
+.large-screen-only {
+    display: none;
+    @include min-break($medium-screen-width + 1) {
+        display: block;
+    }
+}

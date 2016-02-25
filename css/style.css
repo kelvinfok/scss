@@ -1,0 +1,88 @@
+/* CSS Comment */
+body {
+  width: 100%;
+  margin: 0 auto;
+  background-color: whitesmoke;
+  max-width: 900px;
+}
+
+h1 {
+  color: #b37399;
+  text-align: center;
+}
+
+h2 {
+  color: #7c4465;
+}
+
+h3 {
+  color: #5b324a;
+}
+
+header {
+  background: #73b38d;
+}
+header h1 {
+  font-size: 3em;
+}
+
+.btn, .good-btn, .bad-btn {
+  border: 1px solid #ccc;
+  padding: 10px;
+  background: grey;
+}
+.btn:hover, .good-btn:hover, .bad-btn:hover {
+  color: #b37399;
+}
+
+.good-btn {
+  background: #b38273;
+}
+
+.bad-btn {
+  background: #73a4b3;
+}
+
+p {
+  font-size: 1em;
+}
+
+.lead-text {
+  padding: 20px;
+  background: white;
+  border: 1em solid #b37399;
+  border-bottom: 2em solid #b37399;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  -ms-border-radius: 5px;
+  border-radius: 5px;
+}
+
+.small-screen-only {
+  display: none;
+}
+@media (max-width: 600px) {
+  .small-screen-only {
+    display: block;
+  }
+}
+
+.medium-screen-only {
+  display: none;
+}
+@media (min-width: 601px) and (max-width: 800px) {
+  .medium-screen-only {
+    display: block;
+  }
+}
+
+.large-screen-only {
+  display: none;
+}
+@media (min-width: 801px) {
+  .large-screen-only {
+    display: block;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
